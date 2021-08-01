@@ -24,11 +24,21 @@ squareOf(2); // evaluates to 4
 // let h: bigint = 100; // Error TS2322: Type '100' is not assignable
 // // to type 'bigint'.
 
-let a = "hello"; // string
-var b = "billy"; // string
-const c = "!"; // '!'
-let d = a + " " + b + c; // string
-let e: string = "zoom"; // string
-let f: "john" = "john"; // 'john'
-let g: "john" = "zoe"; // Error TS2322: Type "zoe" is not assignable
-// to type "john".
+// let a = "hello"; // string
+// var b = "billy"; // string
+// const c = "!"; // '!'
+// let d = a + " " + b + c; // string
+// let e: string = "zoom"; // string
+// let f: "john" = "john"; // 'john'
+// let g: "john" = "zoe"; // Error TS2322: Type "zoe" is not assignable
+// // to type "john".
+
+let user: {
+  readonly firstName: string;
+} = {
+  firstName: "abby",
+};
+
+user.firstName; // string
+user.firstName = "abbey with an e"; // Error TS2540: Cannot assign to 'firstName' because it
+// is a read-only property.
