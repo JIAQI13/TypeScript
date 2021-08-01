@@ -62,16 +62,16 @@
 //   console.log(c);
 // }
 
-type Cat = { name: string; purrs: boolean };
-type Dog = { name: string; barks: boolean; wags: boolean };
-type CatOrDogOrBoth = Cat | Dog;
-type CatAndDog = Cat & Dog;
+// type Cat = { name: string; purrs: boolean };
+// type Dog = { name: string; barks: boolean; wags: boolean };
+// type CatOrDogOrBoth = Cat | Dog;
+// type CatAndDog = Cat & Dog;
 
-// Cat
-let a: CatOrDogOrBoth = {
-  name: "Bonkers",
-  purrs: true,
-};
+// // Cat
+// let a: CatOrDogOrBoth = {
+//   name: "Bonkers",
+//   purrs: true,
+// };
 
 // // Dog
 // a = {
@@ -105,3 +105,43 @@ let a: CatOrDogOrBoth = {
 function(a: string, b: number) {
   return a || b
 }
+
+
+let a = [1, 2, 3]           // number[]
+var b = ['a', 'b']          // string[]
+let c: string[] = ['a']     // string[]
+let d = [1, 'a']            // (string | number)[]
+const e = [2, 'b']          // (string | number)[]
+
+let f = ['red']
+f.push('blue')
+f.push(true)                // Error TS2345: Argument of type 'true' is not
+                            // assignable to parameter of type 'string'.
+
+let g = []                  // any[]
+g.push(1)                   // number[]
+g.push('red')               // (string | number)[]
+
+let h: number[] = []        // number[]
+h.push(1)                   // number[]
+h.push('red')               // Error TS2345: Argument of type '"red"' is not
+                            // assignable to parameter of type 'number'.
+
+const enum Flippable {
+  Burger = 'Burger',
+  Chair = 'Chair',
+  Cup = 'Cup',
+  Skateboard = 'Skateboard',
+  Table = 'Table'
+}
+
+function flip(f: Flippable) {
+  return 'flipped it'
+}
+
+flip(Flippable.Chair)     // 'flipped it'
+flip(Flippable.Cup)       // 'flipped it'
+flip(12)                  // Error TS2345: Argument of type '12' is not
+                          // assignable to parameter of type 'Flippable'.
+flip('Hat')               // Error TS2345: Argument of type '"Hat"' is not
+                          // assignable to parameter of type 'Flippable'.
