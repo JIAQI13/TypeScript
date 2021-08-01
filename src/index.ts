@@ -1,7 +1,7 @@
-function squareOf(n: number) {
-  return n * n;
-}
-squareOf(2); // evaluates to 4
+// function squareOf(n: number) {
+//   return n * n;
+// }
+// squareOf(2); // evaluates to 4
 // squareOf("z"); // Error TS2345: Argument of type '"z"' is not assignable to
 // // parameter of type 'number'.
 
@@ -33,18 +33,30 @@ squareOf(2); // evaluates to 4
 // let g: "john" = "zoe"; // Error TS2322: Type "zoe" is not assignable
 // // to type "john".
 
-let user: {
-  readonly firstName: string;
-} = {
-  firstName: "abby",
-};
+// let user: {
+//   readonly firstName: string;
+// } = {
+//   firstName: "abby",
+// };
 
-user.firstName; // string
-user.firstName = "abbey with an e"; // Error TS2540: Cannot assign to 'firstName' because it
-// is a read-only property.
+// user.firstName; // string
+// user.firstName = "abbey with an e"; // Error TS2540: Cannot assign to 'firstName' because it
+// // is a read-only property.
 
-let danger: {};
-danger = {};
-danger = { x: 1 };
-danger = [];
-danger = 2;
+// let danger: {};
+// danger = {};
+// danger = { x: 1 };
+// danger = [];
+// danger = 2;
+type Color = "red";
+
+let x = Math.random() < 0.5;
+
+if (x) {
+  type Color = "blue"; // This shadows the Color declared above.
+  let b: Color = "blue";
+  console.log("b", b);
+} else {
+  let c: Color = "red";
+  console.log(c);
+}
