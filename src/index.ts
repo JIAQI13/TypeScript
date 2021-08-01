@@ -48,15 +48,60 @@
 // danger = { x: 1 };
 // danger = [];
 // danger = 2;
-type Color = "red";
 
-let x = Math.random() < 0.5;
+// type Color = "red";
 
-if (x) {
-  type Color = "blue"; // This shadows the Color declared above.
-  let b: Color = "blue";
-  console.log("b", b);
-} else {
-  let c: Color = "red";
-  console.log(c);
+// let x = Math.random() < 0.5;
+
+// if (x) {
+//   type Color = "blue"; // This shadows the Color declared above.
+//   let b: Color = "blue";
+//   console.log("b", b);
+// } else {
+//   let c: Color = "red";
+//   console.log(c);
+// }
+
+type Cat = { name: string; purrs: boolean };
+type Dog = { name: string; barks: boolean; wags: boolean };
+type CatOrDogOrBoth = Cat | Dog;
+type CatAndDog = Cat & Dog;
+
+// Cat
+let a: CatOrDogOrBoth = {
+  name: "Bonkers",
+  purrs: true,
+};
+
+// // Dog
+// a = {
+//   name: "Domino",
+//   barks: true,
+//   wags: true,
+// };
+
+// // Both
+// a = {
+//   name: "Donkers",
+//   barks: true,
+//   purrs: true,
+//   wags: true,
+// };
+
+// let b: CatAndDog = {
+//   name: "Domino",
+//   barks: true,
+//   purrs: true,
+//   wags: true,
+// };
+
+// function trueOrNull(isTrue: boolean) {
+//   if (isTrue) {
+//     return "true";
+//   }
+//   return null;
+// }
+
+function(a: string, b: number) {
+  return a || b
 }
